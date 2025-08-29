@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProSite Studio - Nowoczesne strony WWW</title>
+    <meta name="description" content="ProSite Studio - Tworzę szybkie, responsywne i piękne witryny dla firm i twórców">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="https://i.imgur.com/Fj6JWIA.webp" alt="ProSite Studio Logo" class="logo-img">
+                    <h2>ProSite Studio</h2>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#hero" class="nav-link">Start</a></li>
+                    <li><a href="#oferta" class="nav-link">Oferta</a></li>
+                    <li><a href="#zamowienia" class="nav-link">Zamówienia</a></li>
+                    <li><a href="#opinie" class="nav-link">Opinie</a></li>
+                    <li><a href="#faq" class="nav-link">FAQ</a></li>
+                    <li id="adminOrdersTab" style="display: none;"><a href="#admin-orders" class="nav-link admin-link">📋 Zamówienia</a></li>
+                </ul>
+                <a href="#zamowienia" class="cta-button">Zamów stronę</a>
+                <div class="auth-buttons">
+                    <button id="loginBtn" class="auth-btn">Zaloguj</button>
+                    <button id="registerBtn" class="auth-btn">Rejestracja</button>
+                </div>
+                <div class="user-menu" id="userMenu" style="display: none;">
+                    <span class="user-name" id="userName"></span>
+                    <button id="logoutBtn" class="logout-btn">Wyloguj</button>
+                </div>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="hero-background"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-logo">
+                    <img src="https://i.imgur.com/Fj6JWIA.webp" alt="ProSite Studio Logo" class="hero-logo-img">
+                </div>
+                <h1 class="hero-title">Nowoczesne strony WWW</h1>
+                <p class="hero-description">
+                    Jestem młodym twórcą stron internetowych i prowadzę ProSite Studio. Tworzę szybkie, responsywne i piękne witryny dla firm i twórców. Jako początkujący developer, wszystkie moje usługi są obecnie <strong>całkowicie za darmo</strong> - to mój sposób na zdobycie doświadczenia i budowanie portfolio!
+                </p>
+                <a href="#oferta" class="hero-cta">Zobacz darmową ofertę</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Oferta Section -->
+    <section id="oferta" class="oferta section-padding">
+        <div class="container">
+            <h2 class="section-title">Darmowa Oferta</h2>
+            <div class="offer-intro">
+                <p>Jako młody twórca stron internetowych, oferuję wszystkie swoje usługi <strong>całkowicie za darmo</strong>. To mój sposób na zdobycie doświadczenia i stworzenie portfolio. Jedyne co potrzebuję to Twoja opinia i możliwość dodania projektu do mojego portfolio!</p>
+            </div>
+            <div class="oferta-grid">
+                <div class="oferta-card" data-service="wizytowka">
+                    <div class="card-icon">🌐</div>
+                    <h3>Wizytówka</h3>
+                    <p>Elegancka strona wizytówka dla Twojej firmy. Idealna do prezentacji usług i kontaktu.</p>
+                    <div class="price-tag">GRATIS</div>
+                    <button class="learn-more-btn">Dowiedz się więcej</button>
+                    <div class="card-shine"></div>
+                </div>
+                <div class="oferta-card" data-service="landing">
+                    <div class="card-icon">🚀</div>
+                    <h3>Landing Page</h3>
+                    <p>Skuteczna strona sprzedażowa, która przekonuje odwiedzających do działania.</p>
+                    <div class="price-tag">GRATIS</div>
+                    <button class="learn-more-btn">Dowiedz się więcej</button>
+                    <div class="card-shine"></div>
+                </div>
+                <div class="oferta-card" data-service="sklep">
+                    <div class="card-icon">🛒</div>
+                    <h3>Sklep</h3>
+                    <p>Nowoczesny sklep internetowy z systemem płatności i zarządzaniem produktami.</p>
+                    <div class="price-tag">GRATIS</div>
+                    <button class="learn-more-btn">Dowiedz się więcej</button>
+                    <div class="card-shine"></div>
+                </div>
+                <div class="oferta-card" data-service="blog">
+                    <div class="card-icon">📝</div>
+                    <h3>Blog</h3>
+                    <p>Profesjonalny blog z systemem zarządzania treścią i optymalizacją SEO.</p>
+                    <div class="price-tag">GRATIS</div>
+                    <button class="learn-more-btn">Dowiedz się więcej</button>
+                    <div class="card-shine"></div>
+                </div>
+            </div>
+            
+            <!-- Modal dla szczegółów usług -->
+            <div id="serviceModal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <div class="modal-header">
+                        <div class="modal-icon"></div>
+                        <h2 class="modal-title"></h2>
+                    </div>
+                    <div class="modal-body">
+                        <div class="service-details"></div>
+                        <div class="service-features">
+                            <h4>Co otrzymasz:</h4>
+                            <ul class="features-list"></ul>
+                        </div>
+                        <div class="service-timeline">
+                            <h4>Czas realizacji:</h4>
+                            <p class="timeline-text"></p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#zamowienia" class="modal-cta">Zamów teraz za darmo!</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Zamówienia Section -->
+    <section id="zamowienia" class="zamowienia section-padding">
+        <div class="container">
+            <h2 class="section-title">Złóż zamówienie</h2>
+            <div class="form-container">
+                <form id="orderForm" class="order-form">
+                    <div class="form-group">
+                        <label for="email">Twój email *</label>
+                        <input type="email" id="email" name="email" required>
+                        <span class="error-message"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="inspiracja">Inspiracja (link do strony) *</label>
+                        <input type="url" id="inspiracja" name="inspiracja" placeholder="https://example.com" required>
+                        <span class="error-message"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="nazwa">Nazwa strony *</label>
+                        <input type="text" id="nazwa" name="nazwa" required>
+                        <span class="error-message"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="opis">Ogólny opis *</label>
+                        <textarea id="opis" name="opis" rows="5" placeholder="Opisz swoją wizję strony..." required></textarea>
+                        <span class="error-message"></span>
+                    </div>
+                    
+                    <button type="submit" class="submit-button">
+                        <span class="button-text">Wyślij zamówienie</span>
+                        <div class="spinner"></div>
+                    </button>
+                </form>
+                
+                <div id="successMessage" class="success-message">
+                    <div class="success-icon">✓</div>
+                    <h3>Dziękujemy za zamówienie!</h3>
+                    <p>Twoje zamówienie zostało automatycznie wysłane na antoxscript@gmail.com</p>
+                    <p>Skontaktujemy się z Tobą w ciągu 24 godzin!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Opinie Section -->
+    <section id="opinie" class="opinie section-padding">
+        <div class="container">
+            <h2 class="section-title">Opinie klientów</h2>
+            <div class="opinie-container">
+                <div class="opinie-grid" id="opinieGrid">
+                    <!-- Opinie będą dodawane dynamicznie -->
+                </div>
+                
+                <div class="add-opinia-section">
+                    <h3>Dodaj swoją opinię</h3>
+                    <form id="opiniaForm" class="opinia-form">
+                        <div class="form-group">
+                            <label for="opiniaEmail">Twój email *</label>
+                            <input type="email" id="opiniaEmail" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="opiniaRating">Ocena *</label>
+                            <div class="rating-input">
+                                <input type="radio" id="star5" name="rating" value="5" required>
+                                <label for="star5">⭐</label>
+                                <input type="radio" id="star4" name="rating" value="4">
+                                <label for="star4">⭐</label>
+                                <input type="radio" id="star3" name="rating" value="3">
+                                <label for="star3">⭐</label>
+                                <input type="radio" id="star2" name="rating" value="2">
+                                <label for="star2">⭐</label>
+                                <input type="radio" id="star1" name="rating" value="1">
+                                <label for="star1">⭐</label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="opiniaTresc">Treść opinii *</label>
+                            <textarea id="opiniaTresc" name="tresc" rows="4" placeholder="Podziel się swoją opinią..." required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-opinia-btn">
+                            <span class="button-text">Dodaj opinię</span>
+                            <div class="spinner"></div>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq section-padding">
+        <div class="container">
+            <h2 class="section-title">Często zadawane pytania</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Ile czasu zajmuje stworzenie strony?</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Czas realizacji zależy od złożoności projektu. Prosta wizytówka to 3-5 dni, bardziej zaawansowane projekty mogą zająć 1-2 tygodnie.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Czy strony są responsywne?</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Tak, wszystkie nasze strony są w pełni responsywne i dostosowane do urządzeń mobilnych, tabletów i komputerów.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Czy mogę wprowadzać zmiany po zakończeniu projektu?</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Oczywiście! Oferujemy wsparcie techniczne i możliwość wprowadzania zmian. Szczegóły ustalamy indywidualnie.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Dlaczego wszystko jest za darmo?</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Jestem młodym twórcą stron i dopiero zaczynam swoją przygodę z web developmentem. Oferuję darmowe usługi, aby zdobyć doświadczenie, stworzyć portfolio i otrzymać cenne opinie od klientów.</p>
+                    </div>
+                </div>
+                
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>ProSite Studio</h3>
+                    <p>Nowoczesne strony WWW</p>
+                </div>
+                <div class="footer-links">
+                    <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>
+                    <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
+                    <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ProSite Studio. Wszystkie prawa zastrzeżone.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal Logowania -->
+    <div id="loginModal" class="auth-modal">
+        <div class="auth-modal-content">
+            <span class="auth-close">&times;</span>
+            <div class="auth-header">
+                <h2>🔐 Zaloguj się</h2>
+                <p>Witaj ponownie!</p>
+            </div>
+            <form id="loginForm" class="auth-form">
+                <div class="auth-form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" name="email" required>
+                    <span class="auth-error-message"></span>
+                </div>
+                
+                <div class="auth-form-group">
+                    <label for="loginPassword">Hasło</label>
+                    <input type="password" id="loginPassword" name="password" required>
+                    <span class="auth-error-message"></span>
+                </div>
+                
+                <button type="submit" class="auth-submit-btn">
+                    <span class="button-text">Zaloguj się</span>
+                    <div class="spinner"></div>
+                </button>
+                
+                <div class="auth-switch">
+                    <p>Nie masz konta? <a href="#" id="switchToRegister">Zarejestruj się</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Rejestracji -->
+    <div id="registerModal" class="auth-modal">
+        <div class="auth-modal-content">
+            <span class="auth-close">&times;</span>
+            <div class="auth-header">
+                <h2>📝 Rejestracja</h2>
+                <p>Dołącz do nas!</p>
+            </div>
+            <form id="registerForm" class="auth-form">
+                <div class="auth-form-group">
+                    <label for="registerName">Imię i nazwisko</label>
+                    <input type="text" id="registerName" name="name" required>
+                    <span class="auth-error-message"></span>
+                </div>
+                
+                <div class="auth-form-group">
+                    <label for="registerEmail">Email</label>
+                    <input type="email" id="registerEmail" name="email" required>
+                    <span class="auth-error-message"></span>
+                </div>
+                
+                <div class="auth-form-group">
+                    <label for="registerPassword">Hasło</label>
+                    <input type="password" id="registerPassword" name="password" required>
+                    <span class="auth-error-message"></span>
+                </div>
+                
+                <div class="auth-form-group">
+                    <label for="registerConfirmPassword">Potwierdź hasło</label>
+                    <input type="password" id="registerConfirmPassword" name="confirmPassword" required>
+                    <span class="auth-error-message"></span>
+                </div>
+                
+                <div class="auth-form-group checkbox-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="registerTerms" name="terms" required>
+                        <span class="checkmark"></span>
+                        Akceptuję <a href="#" target="_blank">regulamin</a> i <a href="#" target="_blank">politykę prywatności</a>
+                    </label>
+                    <span class="auth-error-message"></span>
+                </div>
+                
+                <button type="submit" class="auth-submit-btn">
+                    <span class="button-text">Zarejestruj się</span>
+                    <div class="spinner"></div>
+                </button>
+                
+                <div class="auth-switch">
+                    <p>Masz już konto? <a href="#" id="switchToLogin">Zaloguj się</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Admin Panel - Zamówienia (tylko dla antoxscript@gmail.com) -->
+    <section id="admin-orders" class="admin-panel section-padding" style="display: none;">
+        <div class="container">
+            <div class="admin-header">
+                <div class="admin-logo">
+                    <img src="https://i.imgur.com/Fj6JWIA.webp" alt="ProSite Studio" class="admin-logo-img">
+                    <h2>Panel Administratora</h2>
+                </div>
+                <div class="admin-user">
+                    <span class="admin-name">ProSiteStudio</span>
+                    <div class="admin-status online">●</div>
+                </div>
+            </div>
+            
+            <div class="orders-container">
+                <div class="orders-sidebar">
+                    <h3>📋 Zamówienia</h3>
+                    <div class="orders-list" id="ordersList">
+                        <!-- Zamówienia będą dodawane dynamicznie -->
+                    </div>
+                </div>
+                
+                <div class="chat-container">
+                    <div class="chat-header" id="chatHeader">
+                        <div class="chat-user-info">
+                            <div class="chat-avatar">👤</div>
+                            <div class="chat-user-details">
+                                <h4 id="chatUserName">Wybierz zamówienie</h4>
+                                <span id="chatUserStatus">Offline</span>
+                            </div>
+                        </div>
+                        <div class="chat-actions">
+                            <button class="chat-action-btn" title="Oznacz jako wykonane">✅</button>
+                            <button class="chat-action-btn" title="Archiwizuj">📁</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Szczegóły zamówienia -->
+                    <div class="order-details" id="orderDetails" style="display: none;">
+                        <div class="order-details-header">
+                            <h4>📋 Szczegóły zamówienia</h4>
+                            <button class="toggle-details-btn" id="toggleDetailsBtn">🔽</button>
+                        </div>
+                        <div class="order-details-content" id="orderDetailsContent">
+                            <div class="detail-item">
+                                <span class="detail-label">📧 Email:</span>
+                                <span class="detail-value" id="orderEmail">-</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">🎨 Inspiracja:</span>
+                                <a class="detail-value detail-link" id="orderInspiracja" href="#" target="_blank">-</a>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">🌐 Nazwa:</span>
+                                <span class="detail-value" id="orderNazwa">-</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">📝 Opis:</span>
+                                <div class="detail-value detail-description" id="orderOpis">-</div>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">📅 Data:</span>
+                                <span class="detail-value" id="orderDate">-</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">📊 Status:</span>
+                                <select class="detail-value detail-status" id="orderStatus">
+                                    <option value="new">🆕 Nowe</option>
+                                    <option value="in-progress">⚡ W realizacji</option>
+                                    <option value="completed">✅ Zakończone</option>
+                                    <option value="archived">📁 Archiwum</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="chat-messages" id="chatMessages">
+                        <div class="welcome-message">
+                            <div class="welcome-icon">💬</div>
+                            <h3>Witaj w panelu zamówień!</h3>
+                            <p>Wybierz zamówienie z listy po lewej, aby rozpocząć czat z klientem.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="chat-input-container" id="chatInputContainer" style="display: none;">
+                        <div class="chat-input-wrapper">
+                            <button id="emojiBtn" class="emoji-btn" title="Dodaj emoji">😊</button>
+                            <input type="text" id="chatInput" placeholder="Napisz wiadomość..." maxlength="500">
+                            <button id="sendMessageBtn" class="send-btn">📤</button>
+                        </div>
+                        <div class="emoji-picker" id="emojiPicker" style="display: none;">
+                            <div class="emoji-grid">
+                                <span class="emoji-item">😊</span>
+                                <span class="emoji-item">😂</span>
+                                <span class="emoji-item">❤️</span>
+                                <span class="emoji-item">👍</span>
+                                <span class="emoji-item">👎</span>
+                                <span class="emoji-item">🎉</span>
+                                <span class="emoji-item">🔥</span>
+                                <span class="emoji-item">💯</span>
+                                <span class="emoji-item">✅</span>
+                                <span class="emoji-item">❌</span>
+                                <span class="emoji-item">⚡</span>
+                                <span class="emoji-item">🚀</span>
+                                <span class="emoji-item">💡</span>
+                                <span class="emoji-item">🎯</span>
+                                <span class="emoji-item">📱</span>
+                                <span class="emoji-item">💻</span>
+                                <span class="emoji-item">🌟</span>
+                                <span class="emoji-item">🎨</span>
+                                <span class="emoji-item">📝</span>
+                                <span class="emoji-item">📊</span>
+                            </div>
+                        </div>
+                        <div class="chat-typing" id="chatTyping" style="display: none;">
+                            <span>Klient pisze...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chat Widget dla klientów -->
+    <div id="clientChatWidget" class="chat-widget" style="display: none;">
+        <div class="chat-widget-header" id="chatWidgetHeader">
+            <div class="widget-admin-info">
+                <img src="https://i.imgur.com/Fj6JWIA.webp" alt="ProSite Studio" class="widget-admin-avatar">
+                <div class="widget-admin-details">
+                    <span class="widget-admin-name">ProSiteStudio</span>
+                    <span class="widget-admin-status">Online</span>
+                </div>
+            </div>
+            <button id="toggleChatWidget" class="toggle-chat-btn">💬</button>
+        </div>
+        
+        <div class="chat-widget-body" id="chatWidgetBody">
+            <div class="widget-messages" id="widgetMessages">
+                <div class="admin-message">
+                    <div class="message-avatar">
+                        <img src="https://i.imgur.com/Fj6JWIA.webp" alt="ProSite Studio">
+                    </div>
+                    <div class="message-content">
+                        <div class="message-author">ProSiteStudio</div>
+                        <div class="message-text">Witaj! Dziękuję za złożenie zamówienia. Jak mogę Ci pomóc?</div>
+                        <div class="message-time">Teraz</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="widget-input-container">
+                <div class="widget-input-wrapper">
+                    <button id="widgetEmojiBtn" class="widget-emoji-btn" title="Dodaj emoji">😊</button>
+                    <input type="text" id="widgetChatInput" placeholder="Napisz wiadomość..." maxlength="500">
+                    <button id="widgetSendBtn" class="widget-send-btn">📤</button>
+                </div>
+                <div class="widget-emoji-picker" id="widgetEmojiPicker" style="display: none;">
+                    <div class="emoji-grid">
+                        <span class="emoji-item">😊</span>
+                        <span class="emoji-item">😂</span>
+                        <span class="emoji-item">❤️</span>
+                        <span class="emoji-item">👍</span>
+                        <span class="emoji-item">👎</span>
+                        <span class="emoji-item">🎉</span>
+                        <span class="emoji-item">🔥</span>
+                        <span class="emoji-item">💯</span>
+                        <span class="emoji-item">✅</span>
+                        <span class="emoji-item">❌</span>
+                        <span class="emoji-item">⚡</span>
+                        <span class="emoji-item">🚀</span>
+                        <span class="emoji-item">💡</span>
+                        <span class="emoji-item">🎯</span>
+                        <span class="emoji-item">📱</span>
+                        <span class="emoji-item">💻</span>
+                        <span class="emoji-item">🌟</span>
+                        <span class="emoji-item">🎨</span>
+                        <span class="emoji-item">📝</span>
+                        <span class="emoji-item">📊</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
